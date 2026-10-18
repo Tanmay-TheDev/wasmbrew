@@ -14,7 +14,7 @@ A single-file, zero-install coding workspace for **Python 3, C++20, Java and Jav
 
 ## 🎧 Vibe coded, honestly
 
-This site is **vibe coded**. I described what I wanted to an AI assistant, tested it, pasted the errors back, and kept iterating until it worked on my phone and my laptop. The code was generated and revised with AI help (Gemini) and published as is. Expect rough edges, and treat it as a fun experiment, not a production compiler.
+This is a **vibe-coded project**: an experimental browser IDE built through rapid iteration. Expect rough edges, and treat it as a learning tool rather than a production compiler.
 
 ## ✨ Features
 
@@ -48,7 +48,7 @@ This site is **vibe coded**. I described what I wanted to an AI assistant, teste
 | Storage | Browser `localStorage` |
 | Hosting | GitHub Pages |
 | Layout | Fits `100dvh`, 3-column desktop toolbar, stacked mobile layout |
-| Origin | Generated with AI (Gemini), tested and fixed over several chat rounds |
+| Origin | Vibe-coded browser IDE, iterated and tested across devices |
 
 ## 🚀 Run it
 
@@ -67,11 +67,6 @@ cd wasmlab-ide
 - Not a full compiler or interpreter for each language
 - Big or long-running programs can be slow in a browser tab
 - Vibe coded, so bugs are likely. Issues and ideas are welcome
-
-## 🙏 Credits
-
-- Built with AI assistance (Gemini) and a lot of "bro, fix this" prompts
-- Links inside the app: [TeaVM javac](https://github.com/konsoletyper/teavm-javac), [REA](https://github.com/morluto/rea)
 
 ## ⭐ Like it?
 
