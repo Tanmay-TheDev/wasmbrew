@@ -1443,6 +1443,34 @@
     }
 
   </style>
+  <style>
+/* ===== WasmLab layout overlap fixes (desktop + mobile + fullscreen) ===== */
+/* (3)(8) Editor tab strip: tabs scroll inside their own strip; toolbar icons never overlap tabs */
+.editor-tab-strip-wrap { overflow: hidden; }
+.editor-tab-strip { flex: 1 1 0; min-width: 0; }
+/* (1)(5) AI Help input row stays fully inside the panel with two full visible lines (no spill over the status bar) */
+.ai-panel { overflow: hidden; }
+#aiInput { overflow: hidden; min-height: 56px; height: 56px; }
+/* (2) Split GUI: output column scrolls inside its cell; preview box stays inside the terminal pane */
+.terminal-main.split-preview-active { grid-template-rows: minmax(64px, 1fr) auto; }
+.terminal-main.split-preview-active .terminal-output-col { overflow-y: auto; }
+.terminal-main.split-preview-active .terminal-output { min-height: 40px; }
+/* (6) Preview toolbar wraps cleanly at narrow widths; Refresh GUI never squished */
+.preview-toolbar { flex-wrap: wrap; row-gap: 6px; }
+.preview-toolbar > span { flex: 1 1 140px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.preview-toolbar-actions { flex: none; margin-left: auto; }
+/* (7) Brand text ellipsizes instead of colliding with the top action buttons */
+.brand-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* (4) Mobile explorer drawer slides OVER the workspace instead of pushing content in-flow */
+@media (max-width: 680px) {
+  .workspace .explorer { position: absolute; top: 36px; left: 0; bottom: 0; width: min(260px, 82vw); z-index: 45; box-shadow: 10px 0 26px rgba(0, 0, 0, .5); }
+  .workspace.mobile-explorer-open .mobile-drawer-backdrop { z-index: 44; }
+}
+/* (7b) Keep the full "WasmLab" wordmark on phones: hide only the "/ IDE" suffix */
+@media (max-width: 680px) {
+  .brand-name span { display: none; }
+}
+  </style>
 </head>
 <body>
   <input type="file" id="fileInput" multiple accept=".py,.cpp,.cc,.c,.h,.java,.js,.html,.css,.txt,.json,.md" hidden />
@@ -6408,6 +6436,9 @@ function setMobileViewMode(mode) {
       }
       setMobileViewMode = function (mode) {
         workspace.classList.remove("mobile-view-editor", "mobile-view-output", "mobile-view-preview", "mobile-view-ai");
+        closeMobileExplorer();
+        const activityExplorerBtn = $("activityExplorerBtn");
+        if (activityExplorerBtn) activityExplorerBtn.classList.remove("active");
         if (mode === "editor") workspace.classList.add("mobile-view-editor");
         else if (mode === "output") { workspace.classList.add("mobile-view-output"); if (!$("previewView").hidden) switchPanel("terminal"); }
         else if (mode === "preview") { workspace.classList.add("mobile-view-preview"); if ($("previewView").hidden) switchPanel("preview"); }
