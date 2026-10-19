@@ -49,13 +49,13 @@ Please know the limits:
 
 | Language | Engine | What is supported |
 |---|---|---|
-| **Python 3** | In-browser engine | f-strings, comprehensions, slicing, unpacking, classes, recursion, exceptions, and modules `math`, `random`, `collections`, `itertools`, `functools`, `heapq`, `bisect`, `re`, `json`, `statistics` |
+| **Python 3** | **Real CPython 3.13 interpreter (Pyodide / WebAssembly)** | a genuine Python interpreter runs your code: f-strings, comprehensions, slicing, unpacking, classes/OOP, inheritance, recursion, exceptions with real tracebacks, generators, decorators, lambdas, and the full standard library (`math`, `random`, `collections`, `itertools`, `functools`, `heapq`, `bisect`, `re`, `json`, `statistics`, `datetime`, and more) |
 | **C++20** | In-browser compiler + STL | `iostream` (`cin`, `cout`, `getline`), `printf`/`scanf`, `iomanip`, structs, classes, lambdas, templates, `vector`, `string`, `map`, `unordered_map`, `set`, `priority_queue`, `stack`, `queue`, `pair`, `algorithm`, `cmath` |
 | **Java** | **Real OpenJDK JVM (CheerpJ / WebAssembly) + Eclipse Compiler (ECJ)** | a genuine JVM runs your code: classes, inheritance, interfaces, abstract classes, method overloading/overriding, generics, exception handling (try/catch/finally, custom exceptions, try-with-resources), threads, lambdas, streams, enums, `System.out`, `Scanner`, `BufferedReader`, `StringTokenizer`, `StringBuilder`, `Arrays`, `Collections`, `ArrayList`, `HashMap`, `TreeMap`, `HashSet`, `TreeSet`, `PriorityQueue`, `BigInteger`, `java.time`, regex, and the rest of the JDK class library |
 | **JavaScript** | Isolated worker / sandbox | ES2024+, async/await, `input()`/`prompt()`/`readline()` on stdin, console formatting, loop timeout protection |
 | **HTML / CSS** | Sandboxed iframe preview | `index.html` plus your open `.css` / `.js` files, DOM and `<canvas id="canvas">`. Desktop GUI toolkits (tkinter, Qt, Swing, JavaFX) cannot open windows in a browser, so the app shows a note instead |
 
-> Python, C++ and JavaScript are lightweight in-browser implementations, so they cover common learning and practice programs, not every library or edge case of the real toolchains. **Java is different: it runs on a real JVM** (see below).
+> C++ and JavaScript are lightweight in-browser implementations, so they cover common learning and practice programs, not every library or edge case of the real toolchains. **Python and Java are different: they run on a real CPython interpreter and a real JVM** (see below).
 
 ## ☕ Real Java in the browser
 
@@ -76,6 +76,20 @@ What to know:
 - Infinite loops are killed by the 60-second time limit or the **Stop** button (the JVM runs in a Web Worker).
 - Swing/AWT windows cannot pop up in a web page. No file access to your real disk, no sockets.
 - Engine credit: **CheerpJ** © Leaning Technologies, used under the free [CheerpJ Community License](https://cheerpj.com/docs/licensing) (personal projects). **ECJ** © Eclipse Foundation, [EPL-2.0](https://www.eclipse.org/legal/epl-2.0/).
+
+## 🐍 Real Python in the browser
+
+Python is not simulated either. When you press Run on a `.py` file, your code executes on a **genuine CPython 3.13 interpreter** compiled to WebAssembly (**[Pyodide](https://pyodide.org/)**, the official port by the Pyodide project / Mozilla-provenance, used under the [MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/) license).
+
+What to know:
+
+- **First Python run downloads the interpreter once (about 12 MB)**, then your browser caches it. Later runs take a few seconds.
+- The **full Python standard library** works: `math`, `random`, `datetime`, `json`, `re`, `collections`, `itertools`, `functools`, `heapq`, `bisect`, `statistics` and the rest.
+- Errors are the **real CPython tracebacks**, with the true line number shown in the **Problems** tab and fed to **AI Help**.
+- `input()` and `sys.stdin` read from the **Standard Input** box (all input is read up front, like pasting input into an online judge).
+- All **open** `.py` tabs are importable, so `from helper import triple` works across your files.
+- Infinite loops are killed by the 60-second time limit or the **Stop** button (the interpreter runs in a Web Worker).
+- tkinter/PyQt windows cannot open in a web page, and third-party pip packages are not installed.
 
 ## 🛠️ Specs
 
@@ -106,7 +120,7 @@ cd wasmlab-ide
 ## 🐞 Known limits
 
 - Not a full compiler or interpreter for each language
-- Multi-file projects: Run executes the active file. HTML preview inlines open `.css` and `.js` files by name; Python, C++ and Java do not import your other files
+- Multi-file projects: Run executes the active file. Java compiles all open `.java` tabs together and Python can `import` your other open `.py` tabs. HTML preview inlines open `.css` and `.js` files by name; C++ runs the active file only
 - AI Help depends on free third-party services and their rate limits
 - Big or long-running programs can be slow in a browser tab
 - Vibe coded, so bugs are likely. Issues and ideas are welcome
