@@ -1470,6 +1470,20 @@
 @media (max-width: 680px) {
   .brand-name span { display: none; }
 }
+/* (9) Phone header: the project crumb no longer slides under the view switcher (it duplicates the tab + breadcrumb below) */
+@media (max-width: 680px) {
+  .crumbs { display: none; }
+  /* (10) Drop the duplicated fullscreen/settings icons from the phone icon row (they already exist in the toolbar above) */
+  .activity-bottom { display: none; }
+  /* (11) Terminal panes scroll internally instead of overlapping (stdin/output/status-bar collisions, also in full screen) */
+  .terminal-main { overflow-y: auto; }
+  .terminal-output-col { min-height: 0; }
+  .stdin-box { flex: none; }
+}
+/* (12) Full screen: terminal scrolls instead of spilling over the status bar */
+.ide-frame.is-fullscreen .terminal-main,
+.ide-frame:fullscreen .terminal-main,
+.ide-frame:-webkit-full-screen .terminal-main { overflow-y: auto; }
   </style>
 </head>
 <body>
