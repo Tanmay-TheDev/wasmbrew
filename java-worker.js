@@ -68,7 +68,7 @@ self.onmessage = async (ev) => {
     try {
       exitCode = await cheerpjRunMain(
         "Runner",
-        "/app/jrunner.jar:/app/ecj.jar",
+        "/app/jrunner.jar:/app/ecj342.jar",
         packPath,
         String(d.preferred || ""),
         outBase
