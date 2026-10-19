@@ -1,12 +1,12 @@
 <div align="center">
 
-# ⚡ WasmLab IDE
+# ⚡ WasmBrew IDE
 
 **Write code. Run it anywhere. Right in your browser tab.**
 
 A single-file, zero-install coding workspace for **Python 3, C++20, Java, JavaScript and HTML/CSS**, with multiple files, a live GUI preview, a free AI helper for errors, and a layout that works on phones, tablets and desktops.
 
-[**▶ Open the live site**](https://tanmay-thedev.github.io/wasmlab-ide/) · ![HTML](https://img.shields.io/badge/single_file-HTML%2FCSS%2FJS-e34f26) ![Runs](https://img.shields.io/badge/runs-100%25_in_browser-3fb950) ![Backend](https://img.shields.io/badge/backend-none-8957e5) ![AI Help](https://img.shields.io/badge/AI_Help-free_%26_keyless-a58aff) ![Vibe coded](https://img.shields.io/badge/vibe-coded-ff69b4)
+[**▶ Open the live site**](https://tanmay-thedev.github.io/wasmbrew/) · ![HTML](https://img.shields.io/badge/single_file-HTML%2FCSS%2FJS-e34f26) ![Runs](https://img.shields.io/badge/runs-100%25_in_browser-3fb950) ![Backend](https://img.shields.io/badge/backend-none-8957e5) ![AI Help](https://img.shields.io/badge/AI_Help-free_%26_keyless-a58aff) ![Vibe coded](https://img.shields.io/badge/vibe-coded-ff69b4)
 
 </div>
 
@@ -107,13 +107,13 @@ What to know:
 
 ## 🚀 Run it
 
-**Online:** https://tanmay-thedev.github.io/wasmlab-ide/
+**Online:** https://tanmay-thedev.github.io/wasmbrew/
 
 **Locally:**
 
 ```bash
-git clone https://github.com/Tanmay-TheDev/wasmlab-ide.git
-cd wasmlab-ide
+git clone https://github.com/Tanmay-TheDev/wasmbrew.git
+cd wasmbrew
 # open index.html in any modern browser
 ```
 
