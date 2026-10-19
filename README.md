@@ -50,12 +50,12 @@ Please know the limits:
 | Language | Engine | What is supported |
 |---|---|---|
 | **Python 3** | **Real CPython 3.13 interpreter (Pyodide / WebAssembly)** | a genuine Python interpreter runs your code: f-strings, comprehensions, slicing, unpacking, classes/OOP, inheritance, recursion, exceptions with real tracebacks, generators, decorators, lambdas, and the full standard library (`math`, `random`, `collections`, `itertools`, `functools`, `heapq`, `bisect`, `re`, `json`, `statistics`, `datetime`, and more) |
-| **C++20** | In-browser compiler + STL | `iostream` (`cin`, `cout`, `getline`), `printf`/`scanf`, `iomanip`, structs, classes, lambdas, templates, `vector`, `string`, `map`, `unordered_map`, `set`, `priority_queue`, `stack`, `queue`, `pair`, `algorithm`, `cmath` |
+| **C++20** | In-browser compiler + STL | `iostream` (`cin`, `cout`, `getline`), `printf`/`scanf`, `iomanip`, structs, classes, inheritance, lambdas, templates, `vector`, `string`, `map`, `unordered_map`, `set`, `priority_queue`, `stack`, `queue`, `pair`, `algorithm`, `cmath` |
 | **Java** | **Real OpenJDK JVM (CheerpJ / WebAssembly) + Eclipse Compiler (ECJ)** | a genuine JVM runs your code: classes, inheritance, interfaces, abstract classes, method overloading/overriding, generics, exception handling (try/catch/finally, custom exceptions, try-with-resources), threads, lambdas, streams, enums, `System.out`, `Scanner`, `BufferedReader`, `StringTokenizer`, `StringBuilder`, `Arrays`, `Collections`, `ArrayList`, `HashMap`, `TreeMap`, `HashSet`, `TreeSet`, `PriorityQueue`, `BigInteger`, `java.time`, regex, and the rest of the JDK class library |
 | **JavaScript** | Isolated worker / sandbox | ES2024+, async/await, `input()`/`prompt()`/`readline()` on stdin, console formatting, loop timeout protection |
 | **HTML / CSS** | Sandboxed iframe preview | `index.html` plus your open `.css` / `.js` files, DOM and `<canvas id="canvas">`. Desktop GUI toolkits (tkinter, Qt, Swing, JavaFX) cannot open windows in a browser, so the app shows a note instead |
 
-> C++ and JavaScript are lightweight in-browser implementations, so they cover common learning and practice programs, not every library or edge case of the real toolchains. **Python and Java are different: they run on a real CPython interpreter and a real JVM** (see below).
+> C++ and JavaScript are lightweight in-browser implementations, so they cover common learning and practice programs, not every library or edge case of the real toolchains. Known C++ gaps: passing by reference does not mutate the caller's variable, a class cannot have two constructors (use one constructor with default values), and `friend`/operator overloading are not supported. **Python and Java are different: they run on a real CPython interpreter and a real JVM** (see below).
 
 ## ☕ Real Java in the browser
 
